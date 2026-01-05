@@ -1,0 +1,150 @@
+<div class="modal-overlay">
+  <div class="modal-container">
+    <div class="modal-header">
+      <h3>{{ $ctrl.title }}</h3>
+      <button class="btn-close" ng-click="$ctrl.close()">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div ng-if="$ctrl.mode === 'view'" class="view-mode">
+        <div class="user-profile">
+          <div class="avatar-large">
+            {{
+              $ctrl.user.name ? $ctrl.user.name.charAt(0).toUpperCase() : "?"
+            }}
+          </div>
+          <div class="user-details">
+            <h4>{{ $ctrl.user.name }}</h4>
+            <p class="user-email">{{ $ctrl.user.email }}</p>
+          </div>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-iitem">
+            <span class="info-label">Role:</span>
+            <span class="info-value">
+              {{ $ctrl.getRoleLabel($ctrl.user.role) }}
+            </span>
+          </div>
+
+          <div class="info-item">
+            <span class="info-label">Status:</span>
+            <span class="info-value status-badge" ng-class="$ctrl.user.status">
+              {{ $ctrl.user.status === "active" ? "Active" : "Inactive" }}
+            </span>
+          </div>
+
+          <div class="info-item">
+            <span class="info-label">Created at:</span>
+            <span class="info-value">
+              {{ $ctrl.user.createdAt | date: "dd/MM/yyyy HH:mm" }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <form
+        ng-if="$ctrl.mode !== 'view'"
+        class="form-node"
+        name="userForm"
+        novalidate
+      >
+        <div class="form-group">
+          <label for="name">Name *</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="form-control"
+            ng-model="$ctrl.formData.name"
+            required
+            ng-disabled="$ctrl.mode === 'view'"
+            placeholder="Enter full name"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            ng-model="$ctrl.formData.email"
+            required
+            ng-disabled="$ctrl.mode === 'view'"
+            placeholder="user@example.com"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="role">Role *</label>
+          <select
+            id="role"
+            name="role"
+            class="form-control"
+            ng-model="$ctrl.formData.role"
+            ng-disabled="$ctrl.mode === 'view'"
+          >
+            <option value="" disabled>Select a role</option>
+            <option value="admin">Administrator</option>
+            <option value="manager">Manager</option>
+            <option value="user">User</option>
+          </select>
+        </div>
+
+        <div class="form-group" ng-if="$ctrl.mode === 'edit'">
+          <label for="status">Status *</label>
+          <select
+            id="status"
+            name="status"
+            class="form-control"
+            ng-model="$ctrl.formData.status"
+            ng-disabled="$ctrl.mode === 'view'"
+          >
+            <option value="" disabled>Select a status</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+        </div>
+
+        <div
+          class="form-errors"
+          ng-if="userForm.$submitted && (userForm.$invalid || $ctrl.formError)"
+        >
+          <i class="material-icons">warning</i>
+          <span
+            ng-if="
+              userForm.name.$error.required || userForm.email.$error.required
+            "
+          >
+            Please fill in all required fields.
+          </span>
+          <span ng-if="userForm.email.$error.email">
+            Please enter a valid email.
+          </span>
+          <span ng-if="$ctrl.formError">{{ $ctrl.formError }}</span>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" ng-click="$ctrl.close()">
+        {{ $ctrl.mode === "view" ? "Close" : "Cancel" }}
+      </button>
+      <button
+        class="btn btn-primary"
+        ng-click="$ctrl.save(userForm)"
+        ng-if="$ctrl.mode !== 'view'"
+        ng-disabled="!$ctrl.formData.name || ! $ctrl.formData.email || $ctrl.saving"
+      >
+        <span ng-if="!$ctrl.saving">
+          {{ $ctrl.mode === "create" ? "Create" : "Save" }}
+        </span>
+        <span ng-if="$ctrl.saving"
+          ><i class="material-icons">refresh</i> Saving...</span
+        >
+      </button>
+    </div>
+  </div>
+</div>

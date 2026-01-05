@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "angular": "^1.8.3",
+    "angular-router": "^0.0.2",
+    "angular-sanitize": "^1.8.3",
+    "crypto-js": "^4.2.0",
+    "json-server": "^1.0.0-beta.3",
+    "angular-route": "^1.8.3",
+    "angular-ui-bootstrap": "^2.5.6"
+  },
+  "devDependencies": {
+    "prettier": "^3.7.4",
+    "sass": "^1.96.0"
+  }
+}

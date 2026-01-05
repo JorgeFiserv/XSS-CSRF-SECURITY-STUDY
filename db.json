@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "id": "ee33",
+      "name": "Jorge",
+      "email": "jorge@gmail.com",
+      "password": "12345"
+    }
+  ],
+  "company-users": [
+    {
+      "id": "005f",
+      "name": "2jorge22222",
+      "email": "1jorge@gmail.com1",
+      "role": null,
+      "status": "active"
+    },
+    {
+      "id": "e893",
+      "name": "jorge12",
+      "email": "jorge2@gmail.com",
+      "role": "user",
+      "status": "active"
+    }
+  ]
+}

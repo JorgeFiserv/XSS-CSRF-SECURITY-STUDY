@@ -1,0 +1,19 @@
+// Views
+@use "../views/login/_login";
+@use "../views/register/_register";
+@use "../views/home/_home";
+
+// Components
+@use "../components/toast/_toast";
+@use "../components/user-filter/_user-filter.component";
+@use "../components/user-modal/_user-modal.component";
+@use "../components/user-table/_user-table.component";
+@use "../components/logout/_logout.component";
+@use "../components/confirm-modal/confirm-modal.compoennt";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}

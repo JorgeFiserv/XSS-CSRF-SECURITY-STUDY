@@ -1,0 +1,15 @@
+<div class="user-filter-container">
+  <div class="search-box">
+    <span class="material-symbols-outlined">search</span>
+    <input
+      type="text"
+      ng-model="$ctrl.searchText"
+      ng-change="$ctrl.handleSearchChange()"
+      placeholder="Search by name or email..."
+    />
+  </div>
+  <button class="create-button" ng-click="$ctrl.handleCreate()">
+    <span class="material-symbols-outlined">add</span>
+    <span>New User</span>
+  </button>
+</div>

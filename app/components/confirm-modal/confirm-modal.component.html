@@ -1,0 +1,14 @@
+<div class="confirm-modal-overlay" ng-if="$ctrl.resolve">
+  <div class="confirm-modal">
+    <h2>{{ $ctrl.resolve.title }}</h2>
+    <p>{{ $ctrl.resolve.message }}</p>
+    <div class="confirm-modal-buttons">
+      <button class="confirm-button" ng-click="$ctrl.confirm()">
+        {{ $ctrl.resolve.confirmText || "Confirm" }}
+      </button>
+      <button class="cancel-button" ng-click="$ctrl.cancel()">
+        {{ $ctrl.resolve.cancelText || "Cancel" }}
+      </button>
+    </div>
+  </div>
+</div>

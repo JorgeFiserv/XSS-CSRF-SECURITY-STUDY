@@ -1,0 +1,81 @@
+<div class="table-responsive">
+  <table class="users-table">
+    <thead>
+      <tr>
+        <th class="col-id">ID</th>
+        <th class="col-name">Name</th>
+        <th class="col-email">Email</th>
+        <th class="col-role">Role</th>
+        <th class="col-status">Status</th>
+        <th class="col-actions actions-header">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-if="$ctrl.loading">
+        <td colspan="6" class="loading-cell">
+          <span>Loading users...</span>
+        </td>
+      </tr>
+      <tr ng-if="!$ctrl.loading && $ctrl.users.length === 0">
+        <td colspan="6" class="empty-cell">
+          <span class="material-symbols-outlined">group</span>
+          <span>No users found.</span>
+        </td>
+      </tr>
+      <tr ng-repeat="user in $ctrl.users track by user.id">
+        <td class="id-badge">#{{ user.id }}</td>
+        <td class="user-name">
+          <div class="user-avatar">
+            <div class="avatar">
+              {{ $ctrl.getInitials(user.name) }}
+            </div>
+            <div class="user-info">
+              <strong>{{ user.name }}</strong>
+              <small ng-if="user.createdAt">
+                Registered on {{ $ctrl.formatDate(user.createdAt) }}
+              </small>
+            </div>
+          </div>
+        </td>
+        <td class="user-email">
+          <span class="material-symbols-outlined email-icon">mail</span>
+          <span class="email-text">{{ user.email }}</span>
+        </td>
+        <td class="user-role">
+          {{
+            user.role === "admin"
+              ? "Administrator"
+              : user.role === "manager"
+                ? "Manager"
+                : "User"
+          }}
+        </td>
+        <td class="user-status">
+          <span ng-class="user.status">{{
+            user.status === "active" ? "Active" : "Inactive"
+          }}</span>
+        </td>
+        <td class="user-actions">
+          <button
+            class="btn-action view"
+            ng-click="$ctrl.onViewUser({user: user})"
+          >
+            <span class="material-symbols-outlined">visibility</span>
+          </button>
+          <button
+            class="btn-action edit"
+            ng-click="$ctrl.onEditUser({user: user})"
+          >
+            <span class="material-symbols-outlined">edit</span>
+          </button>
+          <button
+            class="btn-action delete"
+            ng-click="$ctrl.onDeleteUser({user: user})"
+          >
+            <span class="material-symbols-outlined">delete</span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

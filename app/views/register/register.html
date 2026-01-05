@@ -1,0 +1,12 @@
+<div class="register-container">
+  <h1>Register</h1>
+  <div class="register-card-container">
+    <input ng-model="vm.name" type="text" placeholder="Name" />
+    <input ng-model="vm.email" type="email" placeholder="Email" />
+    <input ng-model="vm.password" type="password" placeholder="Password" />
+    <button ng-click="vm.register()">Register</button>
+    <div class="login-link">
+      <a href="" ng-click="vm.goTologin()">Already have an account? Login</a>
+    </div>
+  </div>
+</div>

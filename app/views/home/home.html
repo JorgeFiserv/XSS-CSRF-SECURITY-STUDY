@@ -1,0 +1,37 @@
+<div class="home-container" ng-controller="HomeController as vm">
+  <div class="page-header">
+    <h1>User Management</h1>
+    <app-logout></app-logout>
+  </div>
+
+  <app-user-filter
+    search-text="vm.searchText"
+    on-search="vm.handleSearch(text)"
+    on-create="vm.createUser()"
+  ></app-user-filter>
+
+  <app-user-table
+    users="vm.users"
+    loading="vm.loading"
+    on-view-user="vm.viewUser(user)"
+    on-edit-user="vm.editUser(user)"
+    on-delete-user="vm.deleteUser(user)"
+  ></app-user-table>
+
+  <user-modal
+    ng-if="vm.modal.isOpen"
+    is-open="vm.modal.isOpen"
+    mode="vm.modal.mode"
+    title="vm.modal.title"
+    user="vm.modal.user"
+    on-close="vm.closeModal()"
+    on-save="vm.saveUser(userData)"
+  >
+  </user-modal>
+  <confirm-modal
+    ng-if="vm.showConfirmModal"
+    resolve="vm.modalConfig"
+    on-confirm="vm.modalConfirm()"
+    on-cancel="vm.modalCancel()"
+  ></confirm-modal>
+</div>

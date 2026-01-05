@@ -1,0 +1,9 @@
+<div class="toast-container">
+  <div
+    class="toast toast-{{ $ctrl.toast.type }}"
+    ng-class="{'toast-visible': $ctrl.toast.visible, 'toast-hidden': !$ctrl.toast.visible}"
+    ng-show="$ctrl.toast.visible"
+  >
+    <span>{{ $ctrl.toast.message }}</span>
+  </div>
+</div>

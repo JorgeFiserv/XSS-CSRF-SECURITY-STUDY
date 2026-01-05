@@ -1,0 +1,13 @@
+<div class="login-container">
+  <h1>Login</h1>
+  <div class="login-card-container">
+    <input ng-model="vm.email" type="email" placeholder="Email" />
+    <input ng-model="vm.password" type="password" placeholder="Password" />
+    <button ng-click="vm.login()">Login</button>
+    <div class="register-link">
+      <a href="" ng-click="vm.goToRegister()"
+        >Don't have an account? Register</a
+      >
+    </div>
+  </div>
+</div>

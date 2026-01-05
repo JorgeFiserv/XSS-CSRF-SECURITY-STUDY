@@ -1,0 +1,11 @@
+<button class="logout-button" ng-click="$ctrl.openLogoutConfirm()">
+  <span class="material-symbols-outlined">logout</span>
+  <span>Logout</span>
+</button>
+
+<confirm-modal
+  ng-if="$ctrl.showConfirmModal"
+  resolve="$ctrl.modalConfig"
+  on-confirm="$ctrl.confirmLogout()"
+  on-cancel="$ctrl.cancelLogout()"
+></confirm-modal>

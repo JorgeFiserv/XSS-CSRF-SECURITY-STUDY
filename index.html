@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" ng-app="crudApp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crud Angular JS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="app/styles/main.css" />
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-route/angular-route.js"></script>
+    <script src="node_modules/angular-sanitize/angular-sanitize.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <script src="node_modules/crypto-js/crypto-js.js"></script>
+    <script src="app/app.module.js"></script>
+
+    <!--Services-->
+    <script src="app/services/auth.service.js"></script>
+    <script src="app/services/user.service.js"></script>
+    <script src="app/services/modal.service.js"></script>
+    <script src="app/services/toast.service.js"></script>
+    <!--Controllers-->
+    <script src="app/controllers/home.controller.js"></script>
+    <script src="app/controllers/login.controller.js"></script>
+    <script src="app/controllers/register.controller.js"></script>
+    <script src="app/controllers/toast.controller.js"></script>
+
+    <!--Components-->
+    <script src="app/components/user-filter/user-filter.component.js"></script>
+    <script src="app/components/user-table/user-table.component.js"></script>
+    <script src="app/components/user-modal/user-modal.component.js"></script>
+    <script src="app/components/toast/toast.component.js"></script>
+    <script src="app/components/confirm-modal/confirm-modal.component.js"></script>
+    <script src="app/components/logout/logout.component.js"></script>
+
+    <!--Routes-->
+    <script src="app/app.route.js"></script>
+    <script src="app/app.run.js"></script>
+  </head>
+  <body>
+    <app-toast></app-toast>
+    <div ng-view></div>
+  </body>
+</html>
