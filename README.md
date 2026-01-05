@@ -86,34 +86,77 @@ Before you begin, ensure you have the following installed:
 crud-angularjs/
 │
 ├── app/
-│   ├── components/           # Reusable components
-│   │   ├── confirm-modal/    # Confirmation dialog
-│   │   ├── logout/           # Logout button with confirmation
-│   │   ├── toast/            # Toast notifications
-│   │   ├── user-filter/      # Search and create user button
-│   │   ├── user-modal/       # User create/edit/view modal
-│   │   └── user-table/       # User list table
+│   ├── components/                    # Reusable components
+│   │   ├── confirm-modal/
+│   │   │   ├── confirm-modal.component.html
+│   │   │   ├── confirm-modal.component.js
+│   │   │   ├── confirm.modal.component.js
+│   │   │   └── _confirm-modal.component.scss
+│   │   │
+│   │   ├── logout/
+│   │   │   ├── logout-component.html
+│   │   │   ├── logout.component.js
+│   │   │   └── _logout.component.scss
+│   │   │
+│   │   ├── toast/
+│   │   │   ├── toast-component.html
+│   │   │   ├── toast.component.js
+│   │   │   └── _toast.scss
+│   │   │
+│   │   ├── user-filter/
+│   │   │   ├── user-filter.component.html
+│   │   │   ├── user-filter.component.js
+│   │   │   └── _user-filter.component.scss
+│   │   │
+│   │   ├── user-modal/
+│   │   │   ├── user-modal.component.html
+│   │   │   ├── user-modal.component.js
+│   │   │   ├── _user-modal.component.scss
+│   │   │   └── _user.modal.scss
+│   │   │
+│   │   └── user-table/
+│   │       ├── user-table.component.html
+│   │       ├── user-table.component.js
+│   │       └── _user-table.component.scss
 │   │
-│   ├── controllers/          # Page controllers
-│   │   └── home.controller.js
+│   ├── controllers/                   # Page controllers
+│   │   ├── home.controller.js
+│   │   ├── login.controller.js
+│   │   ├── register.controller.js
+│   │   └── toast.controller.js
 │   │
-│   ├── services/             # Business logic services
-│   │   ├── auth.service.js   # Authentication service
-│   │   ├── toast.service.js  # Toast notifications service
-│   │   └── user.service.js   # User CRUD operations
+│   ├── services/                      # Business logic services
+│   │   ├── auth.service.js            # Authentication service
+│   │   ├── crypto.service.js          # Encryption service
+│   │   ├── modal.service.js           # Modal management
+│   │   ├── toast.service.js           # Toast notifications
+│   │   └── user.service.js            # User CRUD operations
 │   │
-│   ├── styles/               # Sass stylesheets
-│   │   ├── components/       # Component-specific styles
-│   │   └── main.scss         # Main stylesheet
+│   ├── styles/                        # Sass stylesheets
+│   │   └── main.scss                  # Main stylesheet (imports all partials)
 │   │
-│   ├── views/                # Page templates
-│   │   └── home/
+│   ├── views/                         # Page templates
+│   │   ├── home/
+│   │   │   ├── home.html
+│   │   │   └── _home.scss
+│   │   │
+│   │   ├── login/
+│   │   │   ├── login.html
+│   │   │   └── _login.scss
+│   │   │
+│   │   └── register/
+│   │       ├── register.html
+│   │       └── _register.scss
 │   │
-│   └── app.js                # App configuration & routing
+│   ├── app.module.js                  # App module definition
+│   ├── app.route.js                   # Routing configuration
+│   └── app.run.js                     # App initialization
 │
-├── db.json                   # JSON Server database
-├── index.html                # Main HTML file
-└── package.json              # Project dependencies
+├── .gitignore                         # Git ignore rules
+├── db.json                            # JSON Server database
+├── index.html                         # Main HTML entry point
+├── package.json                       # Project dependencies
+└── README.md                          # Project documentation
 ```
 
 ---
