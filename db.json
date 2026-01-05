@@ -5,6 +5,12 @@
       "name": "Jorge",
       "email": "jorge@gmail.com",
       "password": "12345"
+    },
+    {
+      "id": "06a3",
+      "name": "jorge",
+      "email": "jorge1@gmail.com",
+      "password": "12345"
     }
   ],
   "company-users": [

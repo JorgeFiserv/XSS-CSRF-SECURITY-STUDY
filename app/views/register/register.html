@@ -4,7 +4,26 @@
     <input ng-model="vm.name" type="text" placeholder="Name" />
     <input ng-model="vm.email" type="email" placeholder="Email" />
     <input ng-model="vm.password" type="password" placeholder="Password" />
+
     <button ng-click="vm.register()">Register</button>
+
+    <div class="xss-tester-section">
+      <label for="xss-input">🔴 XSS Tester (Vulnerable)</label>
+      <input
+        id="xss-input"
+        ng-model="vm.xssInput"
+        type="text"
+        placeholder="Try: <img src=x onerror='alert(&quot;XSS&quot;)'>"
+      />
+      <button class="test-xss-btn" ng-click="vm.executeXss()">
+        Execute XSS Attack
+      </button>
+      <div class="xss-preview-box" ng-if="vm.showXssPreview">
+        <strong>Preview (ng-bind-html - VULNERABLE):</strong>
+        <div ng-bind-html="vm.trustedXssInput" class="xss-output"></div>
+      </div>
+    </div>
+
     <div class="login-link">
       <a href="" ng-click="vm.goTologin()">Already have an account? Login</a>
     </div>
