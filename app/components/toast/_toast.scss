@@ -5,6 +5,14 @@
   z-index: 9999;
 }
 
+.toast-container-fixed {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999999;
+  pointer-events: none;
+}
+
 .toast {
   padding: 16px 24px;
   border-radius: 8px;
@@ -12,9 +20,16 @@
   color: white;
   font-weight: 500;
   min-width: 300px;
-  transform: translateX(100%);
+  font-family: "Roboto", sans-serif;
+  pointer-events: auto;
+  transform: translateX(400px);
   opacity: 0;
   transition: all 0.3s ease-out;
+
+  &.toast-show {
+    transform: translateX(0);
+    opacity: 1;
+  }
 
   &.toast-visible {
     transform: translateX(0);

