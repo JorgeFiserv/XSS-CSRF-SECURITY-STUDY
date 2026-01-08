@@ -85,14 +85,14 @@ angular
       vm.modal.mode = "view";
       vm.modal.title = "User Details";
       vm.modal.user = angular.copy(user);
-      console.log("modal state:", vm.modal);
+      // ...existing code...
     };
     vm.editUser = function (user) {
       vm.modal.isOpen = true;
       vm.modal.mode = "edit";
       vm.modal.title = "Edit User";
       vm.modal.user = angular.copy(user);
-      console.log("modal state:", vm.modal);
+      // ...existing code...
     };
     vm.saveUser = function (userData) {
       var savedData = userData || vm.modal.user;

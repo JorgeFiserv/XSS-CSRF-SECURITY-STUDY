@@ -79,8 +79,5 @@ angular.module("crudApp").factory("UserService", function ($http) {
           throw error;
         });
     },
-
-    getCSRFToken: getCSRFToken,
-    generateCSRFToken: generateCSRFToken,
   };
 });
